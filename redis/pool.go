@@ -265,7 +265,6 @@ func (ac *activeCoon) Close() error {
 
 	pc.c.Exec("")
 	ac.pc.put(pc, ac.state != 0 || pc.c.Err() != nil)
-	ac.pc = nil
 	return nil
 }
 
