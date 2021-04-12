@@ -253,7 +253,7 @@ func (ac *activeCoon) Close() error {
 	if pc == nil {
 		return errConnClose
 	}
-
+	ac.p = nil
 	if ac.state&connectionMultiState != 0 {
 		pc.c.Send("DISCARD")
 		ac.state &^= lookupCommandInfo("DISCARD").clear
