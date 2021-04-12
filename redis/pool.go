@@ -99,7 +99,7 @@ func (p *Pool) GetActive() int {
 
 func (p *Pool) GetIdleCount() int {
 	p.mu.Lock()
-	idleCount := p.MaxIdle
+	idleCount := p.List.count
 	p.mu.Unlock()
 	return idleCount
 }
@@ -253,7 +253,6 @@ func (ac *activeCoon) Close() error {
 	if pc == nil {
 		return errConnClose
 	}
-	ac.p = nil
 
 	if ac.state&connectionMultiState != 0 {
 		pc.c.Send("DISCARD")
