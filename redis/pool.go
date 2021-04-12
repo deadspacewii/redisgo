@@ -251,7 +251,7 @@ type activeCoon struct {
 func (ac *activeCoon) Close() error {
 	pc := ac.p
 	if pc == nil {
-		return nil
+		return errConnClose
 	}
 	ac.p = nil
 
